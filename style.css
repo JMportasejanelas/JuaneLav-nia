@@ -1,0 +1,165 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.hero {
+  min-height: 100vh;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.hero h1 {
+  font-size: 3rem;
+}
+
+.hero button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 30px;
+  background: white;
+  color: #ff4f7a;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.hero button:hover {
+  transform: scale(1.1);
+}
+
+.section {
+  padding: 80px 20px;
+}
+
+.gallery {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.gallery img {
+  width: 220px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+.gallery img:hover {
+  transform: scale(1.1);
+}
+
+/* MODAL ZOOM */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 20px;
+  animation: zoomIn 0.4s ease;
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.6); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.carta {
+  background: rgba(255,255,255,0.15);
+  border-radius: 20px;
+  margin: 40px auto;
+  max-width: 700px;
+  padding: 40px;
+}
+
+footer {
+  padding: 30px;
+  opacity: 0.8;
+}
+
+#contador {
+  font-size: 2rem;
+  margin-top: 20px;
+}
+
+/* TELA SURPRESA */
+.surpresa {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.surpresa-box {
+  background: white;
+  color: #ff4f7a;
+  padding: 40px;
+  border-radius: 25px;
+  max-width: 300px;
+  animation: pop 0.5s ease;
+}
+
+.surpresa-box button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background: #ff4f7a;
+  color: white;
+  cursor: pointer;
+}
+
+/* CORAÇÕES */
+.coracoes span {
+  position: fixed;
+  bottom: -20px;
+  font-size: 24px;
+  animation: subir 6s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes subir {
+  from { transform: translateY(0); opacity: 1; }
+  to { transform: translateY(-110vh); opacity: 0; }
+}
+
+@keyframes pop {
+  from { transform: scale(0.6); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* 📱 RESPONSIVO */
+@media (max-width: 500px) {
+  .hero h1 { font-size: 2rem; }
+  .gallery img {
+    width: 160px;
+    height: 220px;
+  }
+}
