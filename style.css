@@ -2,164 +2,523 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: linear-gradient(135deg, #ff758c, #ff7eb3);
-  color: white;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+  background-attachment: fixed;
+  color: #4a4a4a;
   text-align: center;
   overflow-x: hidden;
+  line-height: 1.6;
 }
 
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.8rem;
+  color: #ff4f7a;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a {
+  color: #ff4f7a;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #ff4f7a;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* HERO */
 .hero {
   min-height: 100vh;
-  padding: 40px 20px;
+  padding: 120px 20px 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 20px;
+  align-items: center;
+  gap: 25px;
+  background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
 }
 
-.hero h1 {
-  font-size: 3rem;
+.titulo-animado {
+  font-family: 'Great Vibes', cursive;
+  font-size: 4.5rem;
+  color: white;
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+  animation: fadeInDown 1.2s ease;
+}
+
+.subtitulo {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 300;
+  animation: fadeInUp 1.4s ease;
 }
 
 .hero button {
-  padding: 12px 25px;
+  padding: 14px 32px;
   border: none;
-  border-radius: 30px;
-  background: white;
-  color: #ff4f7a;
+  border-radius: 50px;
   font-size: 1rem;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  animation: fadeInUp 1.6s ease;
 }
 
-.hero button:hover {
-  transform: scale(1.1);
+.btn-surpresa {
+  background: white;
+  color: #ff4f7a;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
 }
 
+.btn-surpresa:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.btn-musica {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.btn-musica:hover {
+  background: white;
+  color: #ff4f7a;
+  transform: translateY(-3px);
+}
+
+/* SECTIONS */
 .section {
-  padding: 80px 20px;
+  padding: 100px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
+.section h2 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3rem;
+  color: #ff4f7a;
+  margin-bottom: 40px;
+}
+
+/* HISTÓRIA */
+.historia-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 25px;
+  padding: 50px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  line-height: 1.9;
+}
+
+.historia-card p {
+  margin-bottom: 18px;
+  color: #555;
+  font-size: 1.05rem;
+}
+
+.historia-card .destaque {
+  text-align: center;
+  font-weight: 600;
+  color: #ff4f7a;
+  font-size: 1.2rem;
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 2px solid #ffccd5;
+}
+
+/* GALERIA */
 .gallery {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 25px;
+  padding: 20px;
 }
 
 .gallery img {
-  width: 220px;
-  height: 280px;
+  width: 100%;
+  height: 260px;
   object-fit: cover;
   border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  transition: 0.4s;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   cursor: pointer;
 }
 
 .gallery img:hover {
-  transform: scale(1.1);
+  transform: scale(1.08) rotate(2deg);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
 }
 
-/* MODAL ZOOM */
+/* MODAL */
 .modal {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.85);
+  background: rgba(0, 0, 0, 0.92);
   display: none;
   align-items: center;
   justify-content: center;
   z-index: 2000;
+  animation: fadeIn 0.3s ease;
+}
+
+.close-modal {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  color: white;
+  font-size: 3rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  z-index: 2001;
+}
+
+.close-modal:hover {
+  color: #ff4f7a;
 }
 
 .modal img {
   max-width: 90%;
-  max-height: 90%;
-  border-radius: 20px;
+  max-height: 85%;
+  border-radius: 15px;
   animation: zoomIn 0.4s ease;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 }
 
-@keyframes zoomIn {
-  from { transform: scale(0.6); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
+/* CARTA */
 .carta {
-  background: rgba(255,255,255,0.15);
-  border-radius: 20px;
-  margin: 40px auto;
+  background: linear-gradient(135deg, #fff5f7 0%, #ffeef2 100%);
+  border-radius: 25px;
   max-width: 700px;
-  padding: 40px;
+  margin: 0 auto;
+  padding: 50px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  position: relative;
+  overflow: hidden;
 }
 
-footer {
-  padding: 30px;
-  opacity: 0.8;
+.carta::before {
+  content: '💌';
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2.5rem;
+  opacity: 0.3;
 }
 
+.carta p {
+  margin-bottom: 20px;
+  color: #555;
+  font-size: 1.08rem;
+  line-height: 1.9;
+}
+
+.carta .assinatura {
+  text-align: right;
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.8rem;
+  color: #ff4f7a;
+  margin-top: 30px;
+}
+
+/* CONTADOR */
 #contador {
-  font-size: 2rem;
-  margin-top: 20px;
+  font-size: 2.2rem;
+  color: #ff4f7a;
+  font-weight: 300;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30px 50px;
+  border-radius: 20px;
+  display: inline-block;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+#contador span {
+  font-weight: 600;
+  color: #ff4f7a;
+}
+
+/* FOOTER */
+footer {
+  padding: 50px 30px;
+  background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+  color: white;
+}
+
+footer p:first-child {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.frase-footer {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.6rem;
+  opacity: 0.9;
 }
 
 /* TELA SURPRESA */
 .surpresa {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.7);
   display: none;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 1500;
+  animation: fadeIn 0.3s ease;
 }
 
 .surpresa-box {
   background: white;
   color: #ff4f7a;
-  padding: 40px;
-  border-radius: 25px;
-  max-width: 300px;
-  animation: pop 0.5s ease;
+  padding: 50px;
+  border-radius: 30px;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
+  animation: pop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.coracao-pulse {
+  font-size: 4rem;
+  animation: pulse 1.5s ease infinite;
+  margin-bottom: 20px;
+}
+
+.surpresa-box h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.surpresa-box p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #666;
+  margin-bottom: 25px;
 }
 
 .surpresa-box button {
-  margin-top: 15px;
-  padding: 10px 20px;
+  padding: 12px 35px;
   border: none;
-  border-radius: 20px;
-  background: #ff4f7a;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
   color: white;
+  font-size: 1rem;
   cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Poppins', sans-serif;
+}
+
+.surpresa-box button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(255, 79, 122, 0.4);
 }
 
 /* CORAÇÕES */
 .coracoes span {
   position: fixed;
-  bottom: -20px;
+  bottom: -30px;
   font-size: 24px;
-  animation: subir 6s linear infinite;
+  animation: subir 8s linear infinite;
   pointer-events: none;
+  z-index: 999;
 }
 
-@keyframes subir {
-  from { transform: translateY(0); opacity: 1; }
-  to { transform: translateY(-110vh); opacity: 0; }
+/* FADE IN ANIMATION */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ANIMAÇÕES */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 @keyframes pop {
-  from { transform: scale(0.6); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
-/* 📱 RESPONSIVO */
-@media (max-width: 500px) {
-  .hero h1 { font-size: 2rem; }
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+@keyframes subir {
+  from {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 12px 15px;
+  }
+
+  .logo {
+    font-size: 1.4rem;
+  }
+
+  .nav-links {
+    gap: 15px;
+  }
+
+  .nav-links a {
+    font-size: 0.8rem;
+  }
+
+  .titulo-animado {
+    font-size: 3rem;
+  }
+
+  .section h2 {
+    font-size: 2.2rem;
+  }
+
+  .historia-card,
+  .carta {
+    padding: 30px 25px;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+  }
+
   .gallery img {
-    width: 160px;
-    height: 220px;
+    height: 200px;
+  }
+
+  #contador {
+    font-size: 1.4rem;
+    padding: 20px 30px;
+  }
+
+  .surpresa-box {
+    padding: 35px 25px;
+    margin: 20px;
+  }
+
+  .surpresa-box h1 {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nav-links {
+    display: none;
+  }
+
+  .titulo-animado {
+    font-size: 2.5rem;
+  }
+
+  .gallery {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
